@@ -190,7 +190,8 @@ class _CreateMemePageContentState extends State<CreateMemePageContent> {
                                         memeText.text,
                                         style: GoogleFonts.roboto(
                                             fontSize: 16,
-                                            fontWeight: FontWeight.w400),
+                                            fontWeight: FontWeight.w400,
+                                            color: AppColors.darkGrey),
                                       ),
                                     );
                                   }),
@@ -236,7 +237,7 @@ class MemeCanvasWidget extends StatelessWidget {
                       builder: (context, constraints) {
                         return Stack(
                           children: memeTexts.map((memeText) {
-                            return DraggebleMemeText(
+                            return DraggableMemeText(
                               memeText: memeText,
                               parentConstraints: constraints,
                             );
@@ -251,23 +252,23 @@ class MemeCanvasWidget extends StatelessWidget {
   }
 }
 
-class DraggebleMemeText extends StatefulWidget {
+class DraggableMemeText extends StatefulWidget {
   final MemeText memeText;
   final BoxConstraints parentConstraints;
 
-  const DraggebleMemeText({
+  const DraggableMemeText({
     Key? key,
     required this.memeText,
     required this.parentConstraints,
   }) : super(key: key);
 
   @override
-  State<DraggebleMemeText> createState() => _DraggebleMemeTextState(parentConstraints);
+  State<DraggableMemeText> createState() => _DraggableMemeTextState(parentConstraints);
 }
 
-class _DraggebleMemeTextState extends State<DraggebleMemeText> {
+class _DraggableMemeTextState extends State<DraggableMemeText> {
   final BoxConstraints _parentConstraints;
-  _DraggebleMemeTextState(this._parentConstraints);
+  _DraggableMemeTextState(this._parentConstraints);
 
   late double top = _parentConstraints.maxHeight / 2;
   late double left = _parentConstraints.maxWidth / 3;
@@ -276,13 +277,6 @@ class _DraggebleMemeTextState extends State<DraggebleMemeText> {
   final BoxDecoration selectedTextDecoration = BoxDecoration(
       color: AppColors.darkGrey16,
       border: Border.all(color: AppColors.fuchsia));
-
-  //@override
-  //void initState() {
-  //  super.initState();
-  //  double top = widget.parentConstraints.maxHeight / 2;
-  //  double left = widget.parentConstraints.maxWidth / 3;
-  //}
 
   @override
   Widget build(BuildContext context) {
