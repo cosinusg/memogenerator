@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceData {
   static const memeKey = "meme_key";
-  static const templateKey = "template1_key";
+  static const templateKey = "template_key";
 
   static SharedPreferenceData? _instance;
   factory SharedPreferenceData.getInstance() => _instance ??= SharedPreferenceData._internal();
